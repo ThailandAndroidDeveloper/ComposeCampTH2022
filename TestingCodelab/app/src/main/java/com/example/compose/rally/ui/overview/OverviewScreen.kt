@@ -16,7 +16,12 @@
 
 package com.example.compose.rally.ui.overview
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.VectorConverter
+import androidx.compose.animation.core.animateValue
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -37,7 +42,6 @@ import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -95,36 +99,34 @@ private fun AlertCard() {
         )
     }
 
-    var currentTargetElevation by remember { mutableStateOf(1.dp) }
-    LaunchedEffect(Unit) {
-        // Start the animation
-        currentTargetElevation = 8.dp
-    }
-    val animatedElevation = animateDpAsState(
-        targetValue = currentTargetElevation,
-        animationSpec = tween(durationMillis = 500),
-        finishedListener = {
-            currentTargetElevation = if (currentTargetElevation > 4.dp) {
-                1.dp
-            } else {
-                8.dp
-            }
-        }
-    )
-
-    // TODO: fix synchronization
-//    val infiniteElevationAnimation = rememberInfiniteTransition()
-//    val animatedElevation: Dp by infiniteElevationAnimation.animateValue(
-//        initialValue = 1.dp,
-//        targetValue = 8.dp,
-//        typeConverter = Dp.VectorConverter,
-//        animationSpec = infiniteRepeatable(
-//            animation = tween(durationMillis = 500),
-//            repeatMode = RepeatMode.Reverse,
-//        )
+//    var currentTargetElevation by remember {  mutableStateOf(1.dp) }
+//    LaunchedEffect(Unit) {
+//        // Start the animation
+//        currentTargetElevation = 8.dp
+//    }
+//    val animatedElevation = animateDpAsState(
+//        targetValue = currentTargetElevation,
+//        animationSpec = tween(durationMillis = 500),
+//        finishedListener = {
+//            currentTargetElevation = if (currentTargetElevation > 4.dp) {
+//                1.dp
+//            } else {
+//                8.dp
+//            }
+//        }
 //    )
 
-    Card(elevation = animatedElevation.value) {
+    val infiniteElevationAnimation = rememberInfiniteTransition()
+    val animatedElevation: Dp by infiniteElevationAnimation.animateValue(
+        initialValue = 1.dp,
+        targetValue = 8.dp,
+        typeConverter = Dp.VectorConverter,
+        animationSpec = infiniteRepeatable(
+            animation = tween(500),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
+    Card(elevation = animatedElevation) {
         Column {
             AlertHeader {
                 showDialog = true
