@@ -1,4 +1,4 @@
-# Jetpack Compose Codelabs
+# Jetpack Compose Codelabs for ComposeCampTH2022
 
 This repository contains a set of Android Studio projects to help you learn about
 Compose in Android. Each sample contains the code for a specific Compose codelab.
@@ -7,7 +7,9 @@ For more information about Jetpack Compose, please [read the documentation](http
 
 ## 💻 Requirements
 
-[Android Studio Chipmunk](https://developer.android.com/studio).
+[Android Studio Dolphin](https://developer.android.com/studio).
+
+Android Device or Emulator API >= 29
 
 ## 🧬 Codelabs
 
@@ -22,11 +24,6 @@ Learn how to implement real-world designs with the composables and modifiers tha
 ### [State codelab](https://developer.android.com/codelabs/jetpack-compose-state)
 
 Understand patterns for working with state in a declarative world by building a Wellness application.
-
-### [Theming codelab](https://developer.android.com/codelabs/jetpack-compose-theming)
-
-Go hands on with Compose’s implementation of Material Design to understand how to theme an
-application’s colors, typography and shapes and support light and dark themes.
 
 ### [Migration codelab](https://developer.android.com/codelabs/jetpack-compose-migration)
 
@@ -46,11 +43,6 @@ navigate with arguments, support deep-links, and test your navigation.
 
 Learn about testing Jetpack Compose UIs. Write your first tests, and learn about testing in
 isolation, debugging tests, the semantics tree, and test synchronization.
-
-### [Accessibility codelab](https://developer.android.com/codelabs/jetpack-compose-accessibility)
-
-Learn about the various ways to improve an app’s accessibility. Increase touch target sizes, add
-content descriptions, create custom actions, and more.
 
 ## License
 
